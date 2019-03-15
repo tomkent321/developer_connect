@@ -217,11 +217,11 @@ router.post(
   }
 );
 
-// @route   Delete api/profile/experience/:exp_id
+// @route   DELETE api/profile/experience/:exp_id
 // @desc    Delete an education record from profile
 // @access   Private
 
-router.post(
+router.delete(
   "/experience/:exp_id",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
@@ -242,11 +242,11 @@ router.post(
   }
 );
 
-// @route   Delete api/profile/education/:edu_id
+// @route   DELETE api/profile/education/:edu_id
 // @desc    Delete an education record from profile
 // @access   Private
 
-router.post(
+router.delete(
   "/education/:edu_id",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
@@ -266,4 +266,25 @@ router.post(
       .catch(err => res.status(404).json(err));
   }
 );
+
+// @route   Delete api/profile/
+// @desc    Delete a user and profile
+// @access   Private
+// the id comes from the token, not a param
+
+router.delete(
+  "/",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Profile.findOneAndRemove({ user: req.user.id })
+    .then(()=> {
+      User.findOneAndRemove({ _id: req.user.id})
+      .then(()=> {
+        res.json({success: true})
+      })
+    })
+  }
+);
+
+
 module.exports = router;

@@ -126,4 +126,23 @@ router.get(
   }
 );
 
+// @route   GET api/users/all
+// @desc    Get a list of all the users
+// @access   Public
+router.get("/all", (req, res) => {
+  const errors = {};
+  User.find()
+    .then(users => {
+      if (!users) {
+        errors.nousers = "There are no users to list";
+        return res.status(404).json(errors);
+      }
+      res.json(users);
+    })
+    .catch(err =>
+      res.status(404).json({ profiles: "There are no users to list" })
+    );
+});
+
+
 module.exports = router;
