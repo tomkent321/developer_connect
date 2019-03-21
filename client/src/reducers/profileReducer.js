@@ -29,7 +29,6 @@ export default (state = initialState, action) => {
       return {
         ...state,
         profile: null
-
       };
     case actionTypes.GET_PROFILES:
       return {
@@ -39,9 +38,3 @@ export default (state = initialState, action) => {
       return state;
   }
 };
-
-// export const GET_PROFILE = "GET_PROFILE";
-// export const PROFILE_LOADING = "PROFILE_LOADING";
-// export const PROFILE_NOT_FOUND = "PROFILE_NOT_FOUND";
-// export const CLEAR_CURRENT_PROFILE = "CLEAR_CURRENT_PROFILE";
-// export const GET_PROFILES = "GET_PROFILES";
