@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter } from 'react-router-dom';
+import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import TextFieldGroup from "../common/TextFieldGroup";
 import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
@@ -176,7 +176,7 @@ class CreateProfile extends Component {
                   info="City & state suggested (e.g. Denver, CO)"
                 />
                 <TextFieldGroup
-                  placeholder="Skills"
+                  placeholder="* Skills"
                   name="skills"
                   value={this.state.skills}
                   onChange={this.onChange}
@@ -203,6 +203,7 @@ class CreateProfile extends Component {
                 <div className="mb-3">
                   <button
                     className="btn btn-light"
+                    type="button"  //if type is omitted form will think this is a submit 
                     onClick={() => {
                       this.setState(prevState => ({
                         displaySocialInputs: !prevState.displaySocialInputs

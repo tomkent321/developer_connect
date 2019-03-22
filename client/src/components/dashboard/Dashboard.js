@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getCurrentProfile } from "../../actions/profileActions";
 import Spinner from "../common/Spinner";
+import ProfileActions from "./ProfileActions";
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -21,14 +22,23 @@ class Dashboard extends Component {
     } else {
       // Check if logged in user has profile data
       if (Object.keys(profile).length > 0) {
-        dashboardContent = <h4>TODO: Display profile here!</h4>;
+        dashboardContent = (
+          <div>
+            <p className="lead text-muted">
+              Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
+            </p>
+            <ProfileActions />
+          </div>
+        );
       } else {
         // User is logged in but no profile
         dashboardContent = (
           <div>
             <p className="lead text-muted">Welcome {user.name}</p>
             <p>You have not set up a profile, please add some information.</p>
-            <Link to="/create-profile" className="btn btn-lg btn-info">Create Profile</Link> 
+            <Link to="/create-profile" className="btn btn-lg btn-info">
+              Create Profile
+            </Link>
           </div>
         );
       }
