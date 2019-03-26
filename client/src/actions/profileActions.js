@@ -46,3 +46,50 @@ export const clearCurrentProfile = () => {
     type: actionTypes.CLEAR_CURRENT_PROFILE
   };
 };
+
+
+// Delete account & profile
+export const deleteAccount = () => dispatch => {
+  if(window.confirm('Are you sure? This can NOT be undone!')) {
+    axios
+    .delete('/api/profile')
+    .then(res => 
+    dispatch({
+      type: actionTypes.SET_CURRENT_USER,
+      payload: {}
+    })
+  ).catch(err => 
+    dispatch => ({
+      type: actionTypes.GET_ERRORS,
+      payload: err.response.data
+    })
+  );
+}
+}
+
+//Add Experience to Profile
+export const addExperience = (expData, history) => dispatch => {
+  axios
+    .post("/api/profile/experience", expData)
+    .then(res => history.push("/dashboard"))
+    .catch(err =>
+      dispatch({
+        type: actionTypes.GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
+//Add Education to Profile
+export const addEducation = (eduData, history) => dispatch => {
+  axios
+    .post("/api/profile/education", eduData)
+    .then(res => history.push("/dashboard"))
+    .catch(err =>
+      dispatch({
+        type: actionTypes.GET_ERRORS,
+        payload: err.response.data
+      })
+      
+    );
+};
