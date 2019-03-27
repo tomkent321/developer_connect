@@ -43,6 +43,7 @@ export class AddEducation extends Component {
       fieldofstudy: this.state.fieldofstudy,
       from: this.state.from,
       to: this.state.current ? new Date() : this.state.to,
+      current: this.state.current,
       description: this.state.description
     };
     console.log("errors:", this.state.errors);
@@ -81,7 +82,7 @@ export class AddEducation extends Component {
                   error={errors.degree}
                 />
                 <TextFieldGroup
-                  placeholder="Field of study"
+                  placeholder="* Field of study"
                   name="fieldofstudy"
                   value={this.state.fieldofstudy}
                   onChange={this.onChange}
@@ -115,7 +116,7 @@ export class AddEducation extends Component {
                     id="current"
                   />
                   <label htmlFor="current" className="form-check-label">
-                    Current Job
+                    Currently in process
                   </label>
                 </div>
                 <TextAreaFieldGroup

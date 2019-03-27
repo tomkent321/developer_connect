@@ -41,7 +41,8 @@ export class AddExperience extends Component {
       title: this.state.title,
       location: this.state.location,
       from: this.state.from,
-      to: this.state.current ? new Date() : this.state.to,
+      to: this.state.to,
+      current: this.state.current,
       description: this.state.description
     };
     this.props.addExperience(newExp, this.props.history);
