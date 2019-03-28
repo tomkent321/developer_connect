@@ -1,13 +1,47 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import isEmpty from "../../validation/is-empty";
 
 export class ProfileAbout extends Component {
   render() {
-    return (
-      <div>
-        <h1>TODO: Profile About</h1>
+    const { profile } = this.props;
+
+    //Get first name
+    const firstName = profile.user.name.trim().split(" ")[0];
+
+    const skills = profile.skills.map((skill, index) => (
+      <div className="p-3" key={index}>
+        <i className="fa fa-check" /> {skill}
       </div>
-    )
+    ));
+
+    return (
+      <div className="row">
+        <div className="col-md-12">
+          <div className="card card-body bg-light mb-3">
+            <div className="text-center text-info">
+              {isEmpty(profile.bio) ? null : <h3> {firstName}'s Bio</h3>}
+            </div>
+            <p className="lead">
+              {isEmpty(profile.bio) ? null : <span>{profile.bio}</span>}
+            </p>
+            {isEmpty(profile.bio) ? null : <hr />}
+            {/* <hr /> */}
+            <h3 className="text-center text-info">Skill Set</h3>
+            <div className="row">
+              <div className="d-flex flex-wrap justify-content-center align-items-center">
+                {skills}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
 }
+
+ProfileAbout.propTypes = {
+  profile: PropTypes.object.isRequired
+};
 
 export default ProfileAbout;
