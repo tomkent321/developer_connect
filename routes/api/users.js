@@ -19,7 +19,7 @@ const User = require("../../models/User");
 
 router.get("/pam", (req, res) => res.json({ msg: "Pam is very nice!" }));
 
-// @route   GET api/users/register
+// @route   POST api/users/register
 // @desc    Register user
 // @acess   Public
 

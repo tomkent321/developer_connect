@@ -19,6 +19,9 @@ export const getCurrentProfile = () => dispatch => {
       })
     );
 };
+
+
+
 //Create Profile
 export const createProfile = (profileData, history) => dispatch => {
   axios
@@ -90,7 +93,7 @@ export const deleteExperience = id => dispatch => {
     );
 };
 
-//Delete experience entry
+//Delete education entry
 export const deleteEducation = id => dispatch => {
   axios
     .delete(`/api/profile/education/${id}`)
@@ -108,6 +111,24 @@ export const deleteEducation = id => dispatch => {
     );
 };
 
+//Get all profiles
+export const getProfiles = () => dispatch => {
+  dispatch(setProfileLoading());
+  axios
+    .get("/api/profile/all")
+    .then(res =>
+      dispatch({
+        type: actionTypes.GET_PROFILES,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: actionTypes.GET_PROFILES,
+        payload: null
+      })
+    );
+};
 
 // Delete account & profile
 export const deleteAccount = () => dispatch => {

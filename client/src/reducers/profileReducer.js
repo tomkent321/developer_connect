@@ -32,7 +32,9 @@ export default (state = initialState, action) => {
       };
     case actionTypes.GET_PROFILES:
       return {
-        ...state
+        ...state,
+        profiles: action.payload,
+        loading: false
       };
     default:
       return state;
