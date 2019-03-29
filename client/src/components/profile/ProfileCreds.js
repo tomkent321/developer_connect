@@ -28,7 +28,13 @@ export class ProfileCreds extends Component {
             <strong>Position:</strong> {exp.title}
           </p>
           <p>
-            <strong>Description:</strong> {exp.description}
+            {exp.location === ''? null : (<span><strong>{exp.location}</strong></span>)}
+          </p>
+          <p>
+            <strong>Description:</strong> 
+          </p>
+          <p>
+            {exp.description === ''? null : (<span>{exp.description}</span>)}
           </p>
         </li>
       ));
@@ -61,7 +67,10 @@ export class ProfileCreds extends Component {
           </p>
 
           <p>
-            <strong>Description:</strong> {edu.description}
+            <strong>Description:</strong> 
+          </p>
+          <p>
+            {edu.description === ''? null : (<span>{edu.description}</span>)}
           </p>
         </li>
       ));

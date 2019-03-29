@@ -36,9 +36,11 @@ export class Profile extends Component {
             <div className="col-md-6" />
           </div>
           <ProfileHeader profile={profile} />
-          <ProfileAbout profile={profile}/>
-          <ProfileCreds profile={profile}/>
-          <ProfileGithub profile={profile}/>
+          <ProfileAbout profile={profile} />
+          <ProfileCreds profile={profile} />
+          {profile.githubusername ? (
+            <ProfileGithub username={profile.githubusername} />
+          ) : null}
         </div>
       );
     }

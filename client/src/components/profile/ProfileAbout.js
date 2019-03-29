@@ -25,7 +25,7 @@ export class ProfileAbout extends Component {
             <p className="lead">
               {isEmpty(profile.bio) ? null : <span>{profile.bio}</span>}
             </p>
-            {isEmpty(profile.bio) ? null : <hr />}
+            {isEmpty(profile.bio) ? null : (<hr />)}
             {/* <hr /> */}
             <h3 className="text-center text-info">Skill Set</h3>
             <div className="row">
