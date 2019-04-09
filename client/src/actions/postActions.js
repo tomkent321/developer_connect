@@ -151,4 +151,3 @@ export const deleteComment = (postId, commentId) => dispatch => {
       })
     );
 };
-

@@ -7,7 +7,7 @@ module.exports = function validatePostInput(data) {
   //that the Validator.isEmpty test will work (it only works on strings)
   data.text = !isEmpty(data.text) ? data.text : "";
 
-  if (!Validator.isLength(data.text, {min: 10, max: 300})) {
+  if (!Validator.isLength(data.text, { min: 10, max: 300 })) {
     errors.text = "Post length must be between 10 and 300 characters";
   }
 
